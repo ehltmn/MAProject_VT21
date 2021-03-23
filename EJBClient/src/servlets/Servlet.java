@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -48,18 +49,25 @@ public class Servlet extends HttpServlet {
 		
 		//Skapar en person
 		Person p = new Person();
-		p.setPersonId("940516");
-		p.setName("Erika Hultman");
+		p.setPersonId("931114");
+		p.setName("Martin Klingstedt");
 		p.setAddress("Vimpelgatan 11, Malmö");
-		p.setUsername("erikahultman");
-		p.setPassword("pw123");
+		p.setUsername("martinklingstedt");
+		p.setPassword("lösenord123");
 		
-		//facade.createPerson(p);
+		facade.createPerson(p);
 		out.println("<br>");
 		out.println("Person " + p.getName() + " with person id " + p.getPersonId() + " is created");
 		
 		//Skapar en activity		
-		//facade.createActivity("A1", "2021-03-23", "Running", 58.5, 10.0, "Felt ok!", p.getPersonId());
+		facade.createActivity("A2", "2021-03-23", "Running", 55.5, 11.0, "Felt GREAT!", p.getPersonId());
+		
+		out.println("<br><h3>Alla personer:</h3>");
+		List<Person> allPersons = facade.findAllPersons();
+		for (Person person : allPersons) {
+			out.print("<h5>Hittade person med namn: " + person.getName());
+			out.println(" och personnummer: " + person.getPersonId() +"</h5>");
+		}
 		
 		out.println("</body></html>");
 	}

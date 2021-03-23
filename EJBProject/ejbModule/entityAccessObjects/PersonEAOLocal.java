@@ -1,5 +1,7 @@
 package entityAccessObjects;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import classesEJB.Person;
@@ -10,4 +12,7 @@ public interface PersonEAOLocal {
 	public Person findPersonByPersonId(String personId);
 	public Person updatePerson(Person person);
 	public void deletePerson(String personId);
+	
+	//NamedQuery signatures
+	public List<Person> findAll();
 }

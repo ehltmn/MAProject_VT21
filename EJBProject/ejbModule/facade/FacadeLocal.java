@@ -1,5 +1,7 @@
 package facade;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import classesEJB.Activity;
@@ -13,6 +15,9 @@ public interface FacadeLocal {
 	public Person createPerson(Person person);
 	public Person updatePerson(Person person);
 	public void deletePerson(String personId);
+	
+	//NamedQueries Person
+	public List<Person> findAllPersons();
 	
 	//Signatures - Activity
 	public Activity findByActivityNumber(String activityNumber);

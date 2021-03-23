@@ -1,5 +1,7 @@
 package facade;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -39,7 +41,13 @@ public class Facade implements FacadeRemote, FacadeLocal {
     public void deletePerson(String personId) {
     	personEAO.deletePerson(personId);
     }
+    
+    //NamedQueries Person
+    public List<Person> findAllPersons(){
+    	return personEAO.findAll();
+    }
 	
+    //********///
     //Activity
     public Activity findByActivityNumber(String activityNumber) {
     	return activityEAO.findActivityByActivityNumber(activityNumber);

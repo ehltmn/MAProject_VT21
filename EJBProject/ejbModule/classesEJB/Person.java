@@ -6,6 +6,10 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Person.findAll", query="SELECT p FROM Person p"), 
+	@NamedQuery(name="Person.findByName", query="SELECT p FROM Person p WHERE p.name LIKE: name"),
+})
 @Table(name="Person")
 public class Person implements Serializable {
 	

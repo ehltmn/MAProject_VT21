@@ -1,8 +1,11 @@
 package entityAccessObjects;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import classesEJB.Person;
 
@@ -42,6 +45,14 @@ public class PersonEAOImpl implements PersonEAOLocal {
     	if (p != null) {
     		entityManager.remove(p);
     	}
+    }
+    
+    //NamedQuery-methods
+    public List<Person> findAll(){
+    	TypedQuery<Person> query = entityManager.createNamedQuery("Person.findAll", Person.class);
+    	
+    	List<Person> results = query.getResultList();
+    	return results;
     }
     
     //Other methods if neccessary
